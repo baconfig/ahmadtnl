@@ -1,0 +1,76 @@
+function subdomainsshweb() {
+#SUB=microsoft.azure
+#DOMAIN=ganteng.tech DOMAIN=yaddykakkoii.my.id #DOMAIN=sshweb.tech
+echo "DOMAIN UTAMA ADALAH sshweb.tech"
+echo "~~~~~~ petunjuk tentang custom subdomain ~~~~~~~~~"
+echo "JIKA KAMU INPUT KATA: test ,maka hasilnya adalah test.sshweb.tech"
+echo "JIKA KAMU INPUT KATA: custom ,maka hasilnya adalah custom.sshweb.tech"
+echo "JIKA KAMU INPUT KATA: ainzoverlord ,maka hasilnya adalah ainzoverlord.sshweb.tech"
+echo "JIKA KAMU INPUT KATA: sg3 ,maka hasilnya adalah sg3.sshweb.tech"
+echo "JIKA KAMU INPUT KATA: memekpink ,maka hasilnya adalah memekpink.sshweb.tech"
+echo ""
+read -rp "silakan INPUT custom subdomain kamu : " -e SUB
+echo ""
+MYIP=$(wget -qO- icanhazip.com);
+CF_ID=yadicakepp@gmail.com
+CF_KEY=b22d286c2d7f6d3e5073325dd18b76ca4ddb2
+DOMAIN=sshweb.tech
+SUB_DOMAIN=${SUB}.${DOMAIN}
+NS_DOMAIN=ns.${SUB_DOMAIN}
+echo "DOMAIN kamu adalah : ${SUB_DOMAIN}"
+sleep 3
+echo "IP=${SUB_DOMAIN}" > /var/lib/yaddykakkoii/ipvps.conf
+set -euo pipefail
+IP=$(wget -qO- icanhazip.com);
+echo "Updating DNS RECORD (DomainNameSystem) for ${SUB_DOMAIN} "
+sleep 2
+ZONE=$(curl -sLX GET "https://api.cloudflare.com/client/v4/zones?name=${DOMAIN}&status=active" \
+    -H "X-Auth-Email: ${CF_ID}" \
+    -H "X-Auth-Key: ${CF_KEY}" \
+    -H "Content-Type: application/json" | jq -r .result[0].id)
+RECORD=$(curl -sLX GET "https://api.cloudflare.com/client/v4/zones/${ZONE}/dns_records?name=${SUB_DOMAIN}" \
+    -H "X-Auth-Email: ${CF_ID}" \
+    -H "X-Auth-Key: ${CF_KEY}" \
+    -H "Content-Type: application/json" | jq -r .result[0].id)
+    if [[ "${#RECORD}" -le 10 ]]; then
+        RECORD=$(curl -sLX POST "https://api.cloudflare.com/client/v4/zones/${ZONE}/dns_records" \
+        -H "X-Auth-Email: ${CF_ID}" \
+        -H "X-Auth-Key: ${CF_KEY}" \
+        -H "Content-Type: application/json" \
+        --data '{"type":"A","name":"'${SUB_DOMAIN}'","content":"'${IP}'","ttl":120,"proxied":false}' | jq -r .result.id)
+    fi
+RESULT=$(curl -sLX PUT "https://api.cloudflare.com/client/v4/zones/${ZONE}/dns_records/${RECORD}" \
+    -H "X-Auth-Email: ${CF_ID}" \
+    -H "X-Auth-Key: ${CF_KEY}" \
+    -H "Content-Type: application/json" \
+    --data '{"type":"A","name":"'${SUB_DOMAIN}'","content":"'${IP}'","ttl":120,"proxied":false}')
+# update nameserver mu
+echo "Updating NS RECORD (NameServer) for ${NS_DOMAIN} "
+ZONE=$(curl -sLX GET "https://api.cloudflare.com/client/v4/zones?name=${DOMAIN}&status=active" \
+    -H "X-Auth-Email: ${CF_ID}" \
+    -H "X-Auth-Key: ${CF_KEY}" \
+    -H "Content-Type: application/json" | jq -r .result[0].id)
+RECORD=$(curl -sLX GET "https://api.cloudflare.com/client/v4/zones/${ZONE}/dns_records?name=${NS_DOMAIN}" \
+    -H "X-Auth-Email: ${CF_ID}" \
+    -H "X-Auth-Key: ${CF_KEY}" \
+    -H "Content-Type: application/json" | jq -r .result[0].id)
+    if [[ "${#RECORD}" -le 10 ]]; then
+        RECORD=$(curl -sLX POST "https://api.cloudflare.com/client/v4/zones/${ZONE}/dns_records" \
+        -H "X-Auth-Email: ${CF_ID}" \
+        -H "X-Auth-Key: ${CF_KEY}" \
+        -H "Content-Type: application/json" \
+        --data '{"type":"NS","name":"'${NS_DOMAIN}'","content":"'${SUB_DOMAIN}'","ttl":120,"proxied":false}' | jq -r .result.id)
+    fi
+RESULT=$(curl -sLX PUT "https://api.cloudflare.com/client/v4/zones/${ZONE}/dns_records/${RECORD}" \
+    -H "X-Auth-Email: ${CF_ID}" \
+    -H "X-Auth-Key: ${CF_KEY}" \
+    -H "Content-Type: application/json" \
+    --data '{"type":"NS","name":"'${NS_DOMAIN}'","content":"'${SUB_DOMAIN}'","ttl":120,"proxied":false}')
+echo "DOMAIN KAMU : $SUB_DOMAIN"
+echo $SUB_DOMAIN > /etc/xray/domain
+echo "NAMESERVER KAMU : $NS_DOMAIN"
+echo $NS_DOMAIN > /etc/xray/nsdomain
+echo $NS_DOMAIN > /etc/xray/dns
+sleep 3
+cd
+}
