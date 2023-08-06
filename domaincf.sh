@@ -10,21 +10,20 @@ NC='\e[0m'
 yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
 clear
 apt install jq curl -y
-function subdomainsshweb() {
-#DOMAIN=ahmadstore.pw DOMAIN=ahmadstore.pw #DOMAIN=ahmadstore.pw
-echo "DOMAIN UTAMA ADALAH sshweb.tech"
+function custom_subdomain_ahmad() {
+echo "DOMAIN UTAMA ADALAH ahmadstore.pw"
 echo "~~~~~~ petunjuk tentang custom subdomain ~~~~~~~~~"
-echo "JIKA KAMU INPUT KATA: test ,maka hasilnya adalah test.sshweb.tech"
-echo "JIKA KAMU INPUT KATA: custom ,maka hasilnya adalah custom.sshweb.tech"
-echo "JIKA KAMU INPUT KATA: ainzoverlord ,maka hasilnya adalah ainzoverlord.sshweb.tech"
-echo "JIKA KAMU INPUT KATA: sg3 ,maka hasilnya adalah sg3.sshweb.tech"
-echo "JIKA KAMU INPUT KATA: memekpink ,maka hasilnya adalah memekpink.sshweb.tech"
+echo "JIKA KAMU INPUT KATA: test ,maka hasilnya adalah test.ahmadstore.pw"
+echo "JIKA KAMU INPUT KATA: custom ,maka hasilnya adalah custom.ahmadstore.pw"
+echo "JIKA KAMU INPUT KATA: ainzoverlord ,maka hasilnya adalah ainzoverlord.ahmadstore.pw"
+echo "JIKA KAMU INPUT KATA: sg3 ,maka hasilnya adalah sg3.ahmadstore.pw"
+echo "JIKA KAMU INPUT KATA: memekpink ,maka hasilnya adalah memekpink.ahmadstore.pw"
 echo ""
 read -rp "silakan INPUT custom subdomain kamu : " -e SUB
 echo ""
 MYIP=$(wget -qO- icanhazip.com);
-CF_ID=centerdata96@gmail.com
-CF_KEY=0adfcabdd8e54a57dc5af4fb08dd1041cbea7
+CF_ID=yadicakepp@gmail.com
+CF_KEY=b22d286c2d7f6d3e5073325dd18b76ca4ddb2
 DOMAIN=ahmadstore.pw
 SUB_DOMAIN=${SUB}.${DOMAIN}
 NS_DOMAIN=ns.${SUB_DOMAIN}
@@ -86,11 +85,10 @@ sleep 3
 cd
 }
 
-function randomsubdomain() {
-#SUB=$(</dev/urandom tr -dc a-z0-9 | head -c5)
+function random_subdomain() {
 MYIP=$(wget -qO- icanhazip.com);
-CF_ID=centerdata96@gmail.com
-CF_KEY=0adfcabdd8e54a57dc5af4fb08dd1041cbea7
+CF_ID=yadicakepp@gmail.com
+CF_KEY=b22d286c2d7f6d3e5073325dd18b76ca4ddb2
 SUB=$(</dev/urandom tr -dc a-z0-9 | head -c3)
 DOMAIN=config.biz.id
 SUB_DOMAIN=tensai.${SUB}.${DOMAIN}
@@ -181,14 +179,14 @@ echo ""
         read -rp "Input DOMAIN Kamu : " -e domainmu
         if [ -z ${domainmu} ]; then
             echo -e " Anda belum memasukkan domain! Then a random domain will be created"
-            randomsubdomain
+            random_subdomain
         else
 	        echo "$domainmu" > /etc/xray/domain
             echo "IP=$domainmu" > /var/lib/yaddykakkoii/ipvps.conf
         fi
         clear
     elif [[ $host == "2" ]]; then
-        subdomainsshweb
+        custom_subdomain_ahmad
         clear
     elif [[ $host == "3" ]]; then
         echo " skipp gaess "
@@ -196,7 +194,7 @@ echo ""
     else
         echo -e "Random Subdomain/Domain is used"
         sleep 3
-        randomsubdomain
+        random_subdomain
         clear
     fi
 }
