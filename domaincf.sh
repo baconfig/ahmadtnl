@@ -90,7 +90,7 @@ MYIP=$(wget -qO- icanhazip.com);
 CF_ID=centerdata96@gmail.com
 CF_KEY=0adfcabdd8e54a57dc5af4fb08dd1041cbea7
 SUB=$(</dev/urandom tr -dc a-z0-9 | head -c3)
-DOMAIN=config.biz.id
+DOMAIN=ahmadstore.pw
 SUB_DOMAIN=tensai.${SUB}.${DOMAIN}
 NS_DOMAIN=ns.${SUB_DOMAIN}
 echo "DOMAIN kamu adalah : ${SUB_DOMAIN}"
