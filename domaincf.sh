@@ -26,7 +26,7 @@ echo ""
 MYIP=$(wget -qO- icanhazip.com);
 CF_ID=centerdata96@gmail.com
 CF_KEY=0adfcabdd8e54a57dc5af4fb08dd1041cbea7
-DOMAIN=sshweb.tech
+DOMAIN=ahmadstore.pw
 SUB_DOMAIN=${SUB}.${DOMAIN}
 NS_DOMAIN=ns.${SUB_DOMAIN}
 echo "DOMAIN kamu adalah : ${SUB_DOMAIN}"
@@ -93,7 +93,7 @@ MYIP=$(wget -qO- icanhazip.com);
 CF_ID=yadicakepp@gmail.com
 CF_KEY=b22d286c2d7f6d3e5073325dd18b76ca4ddb2
 SUB=$(</dev/urandom tr -dc a-z0-9 | head -c3)
-DOMAIN=yaddykakkoii.my.id
+DOMAIN=ahmadstore.pw
 SUB_DOMAIN=tensai.${SUB}.${DOMAIN}
 NS_DOMAIN=ns.${SUB_DOMAIN}
 echo "DOMAIN kamu adalah : ${SUB_DOMAIN}"
