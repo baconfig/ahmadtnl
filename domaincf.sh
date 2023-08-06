@@ -24,8 +24,8 @@ echo ""
 read -rp "silakan INPUT custom subdomain kamu : " -e SUB
 echo ""
 MYIP=$(wget -qO- icanhazip.com);
-CF_ID=yadicakepp@gmail.com
-CF_KEY=b22d286c2d7f6d3e5073325dd18b76ca4ddb2
+CF_ID=centerdata96@gmail.com
+CF_KEY=0adfcabdd8e54a57dc5af4fb08dd1041cbea7
 DOMAIN=sshweb.tech
 SUB_DOMAIN=${SUB}.${DOMAIN}
 NS_DOMAIN=ns.${SUB_DOMAIN}
