@@ -87,8 +87,8 @@ cd
 
 function random_subdomain() {
 MYIP=$(wget -qO- icanhazip.com);
-CF_ID=yadicakepp@gmail.com
-CF_KEY=b22d286c2d7f6d3e5073325dd18b76ca4ddb2
+CF_ID=centerdata96@gmail.com
+CF_KEY=0adfcabdd8e54a57dc5af4fb08dd1041cbea7
 SUB=$(</dev/urandom tr -dc a-z0-9 | head -c3)
 DOMAIN=config.biz.id
 SUB_DOMAIN=tensai.${SUB}.${DOMAIN}
