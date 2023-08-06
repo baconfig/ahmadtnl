@@ -11,7 +11,7 @@ yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
 clear
 apt install jq curl -y
 function subdomainsshweb() {
-#DOMAIN=config.biz.id DOMAIN=ahmadstore.pw #DOMAIN=ahmadstore.pw
+#DOMAIN=ahmadstore.pw DOMAIN=ahmadstore.pw #DOMAIN=ahmadstore.pw
 echo "DOMAIN UTAMA ADALAH sshweb.tech"
 echo "~~~~~~ petunjuk tentang custom subdomain ~~~~~~~~~"
 echo "JIKA KAMU INPUT KATA: test ,maka hasilnya adalah test.sshweb.tech"
