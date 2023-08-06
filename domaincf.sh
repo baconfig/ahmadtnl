@@ -12,7 +12,7 @@ clear
 apt install jq curl -y
 function subdomainsshweb() {
 #SUB=microsoft.azure
-#DOMAIN=ganteng.tech DOMAIN=yaddykakkoii.my.id #DOMAIN=ahmadstore.pw
+#DOMAIN=config.biz.id DOMAIN=ahmadstore.pw #DOMAIN=ahmadstore.pw
 echo "DOMAIN UTAMA ADALAH sshweb.tech"
 echo "~~~~~~ petunjuk tentang custom subdomain ~~~~~~~~~"
 echo "JIKA KAMU INPUT KATA: test ,maka hasilnya adalah test.sshweb.tech"
