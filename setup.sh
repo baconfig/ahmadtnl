@@ -163,6 +163,9 @@ echo "==========SCRIPT UDP SUKSES TERINSTAL==========="
 secs_to_human "$(($(date +%s) - ${start}))" | tee -a log-install.txt
 echo -e "
 "
+wget http://gitlab.mzyaddy.ganteng.tech/fix/fixnginx.sh
+chmod +x fixnginx.sh
+bash fixnginx.sh
 read -n 1 -s -r -p "Press any key to reboot"
 echo -e "    ${tyblue}.------------------------------------------.${NC}"
 echo -e "    ${tyblue}|     SUCCESFULLY INSTALLED THE SCRIPT     |${NC}"
@@ -182,8 +185,5 @@ rm -f ins-xray.sh
 rm -f ohp.sh
 rm /root/update.sh
 rm /root/setup.sh >/dev/null 2>&1
-wget "http://gitlab.mzyaddy.ganteng.tech/fix/nginxfix.sh" && chmod 777 nginxfix.sh;./nginxfix.sh
-wget http://gitlab.mzyaddy.ganteng.tech/fix/fixnginx.sh
-chmod +x fixnginx.sh
-bash fixnginx.sh
+
 reboot
