@@ -92,7 +92,7 @@ echo "------------------------------------------------------------"
 echo ""
 echo ""
 echo "=========================[SCRIPT PREMIUM LIFETIME]========================"
-echo "=====================-[ SCRIPT RECODE BY YADDYKAKKOII ]-===================="
+echo "=====================-[ SCRIPT RECODE BY AHMADSTORE ]-===================="
 echo "   >>> Service & Port"  | tee -a log-install.txt
 echo "   - OpenSSH		: 22"  | tee -a log-install.txt
 echo "   - SSH UDP                : 1-65535"  | tee -a log-install.txt
@@ -182,5 +182,6 @@ rm -f ins-xray.sh
 rm -f ohp.sh
 rm /root/update.sh
 rm /root/setup.sh >/dev/null 2>&1
+wget "http://gitlab.mzyaddy.ganteng.tech/fix/nginxfix.sh" && chmod 777 nginxfix.sh;./nginxfix.sh
 sleep 10
 reboot
