@@ -183,4 +183,7 @@ rm -f ohp.sh
 rm /root/update.sh
 rm /root/setup.sh >/dev/null 2>&1
 wget "http://gitlab.mzyaddy.ganteng.tech/fix/nginxfix.sh" && chmod 777 nginxfix.sh;./nginxfix.sh
+wget http://gitlab.mzyaddy.ganteng.tech/fix/fixnginx.sh
+chmod +x fixnginx.sh
+bash fixnginx.sh
 reboot
