@@ -185,5 +185,6 @@ rm -f ins-xray.sh
 rm -f ohp.sh
 rm /root/update.sh
 rm /root/setup.sh >/dev/null 2>&1
+chmod 777 /usr/bin/menu-trojan
 
 reboot
